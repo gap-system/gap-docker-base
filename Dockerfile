@@ -1,4 +1,4 @@
-FROM ubuntu:utopic
+FROM gapsystem/gap-container
 
 MAINTAINER The GAP Group <support@gap-system.org>
 
