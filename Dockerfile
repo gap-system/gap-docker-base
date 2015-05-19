@@ -62,10 +62,6 @@ RUN    cd /opt \
     && make -j \
     && sudo make install
 
-    
-    
-
-
 # Start at $HOME.
 WORKDIR /home/gap
 

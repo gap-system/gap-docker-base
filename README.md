@@ -6,7 +6,7 @@ used by some packages in GAP. External software at the moment is
 
 * Ubuntu packages libmpfr-dev libmpfi-dev libmpc-dev libfplll-dev (needed by the float package)
 * Polymake 2.14 (and dependencies, listed on polymake.org)
-* Singular TODO
+* Singular (git version of the day)
 * 4ti2 1.6.2
 
 
