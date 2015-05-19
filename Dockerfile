@@ -17,7 +17,7 @@ RUN    sudo apt-get update -qq \
                                    libmpfr-dev libmpfi-dev libmpc-dev libfplll-dev \
                                    ## Singular stuff
                                    autoconf autogen libtool libreadline6-dev libglpk-dev \
-                                   libmpfr-dev libcdd-dev libntl-dev
+                                   libmpfr-dev libcdd-dev libntl-dev git
 
 # Polymake
 RUN    cd /tmp \
