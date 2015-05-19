@@ -54,11 +54,11 @@ RUN    cd /tmp \
 
 # 4ti2
 RUN    cd /opt \
-    && sudo wget http://www.4ti2.de/version_1.6.2/4ti2-1.6.2.tar.gz \
-    && sudo tar -xf 4ti2-1.6.2.tar.gz \
-    && sudo chown -hR gap 4ti2-1.6.2 \
-    && sudo rm 4ti2-1.6.2.tar.gz \
-    && cd 4ti2-1.6.2 \
+    && sudo wget http://www.4ti2.de/version_1.6.3/4ti2-1.6.3.tar.gz \
+    && sudo tar -xf 4ti2-1.6.3.tar.gz \
+    && sudo chown -hR gap 4ti2-1.6.3 \
+    && sudo rm 4ti2-1.6.3.tar.gz \
+    && cd 4ti2-1.6.3 \
     && ./configure \
     && make -j \
     && sudo make install
