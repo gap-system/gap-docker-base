@@ -44,7 +44,7 @@ RUN    cd /tmp \
 RUN    cd /tmp \
     && git clone https://github.com/wbhart/flint2.git \
     && cd flint2 \
-    && ./configure --with-gmp=/usr \
+    && ./configure \
     && make -j \
     && sudo make install \
     && cd /tmp \
@@ -54,7 +54,7 @@ RUN    cd /tmp \
 RUN    cd /opt \
     && sudo mkdir Singular \
     && sudo chown -hR gap Singular \
-    && cd Singular
+    && cd Singular \
     && git clone https://github.com/Singular/Sources.git \
     && cd Sources \
     && ./autogen.sh \
