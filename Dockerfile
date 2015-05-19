@@ -44,7 +44,7 @@ RUN    cd /tmp \
 RUN    cd /tmp \
     && git clone https://github.com/wbhart/flint2.git \
     && cd flint2 \
-    && ./configure --with-gmp=system \
+    && ./configure --with-gmp=/usr \
     && make -j \
     && sudo make install \
     && cd /tmp \
