@@ -59,7 +59,7 @@ RUN    cd /opt \
     && sudo chown -hR gap 4ti2-1.6.2 \
     && sudo rm 4ti2-1.6.2.tar.gz \
     && cd 4ti2-1.6.2 \
-    && ./configure --enable-shared \
+    && ./configure \
     && make -j \
     && sudo make install
 
