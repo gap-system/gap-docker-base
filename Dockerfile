@@ -41,7 +41,7 @@ RUN    cd /tmp \
     && rm -rf 4ti2*
 
 # flint (for Singular)
-RUN    cd /tmp
+RUN    cd /tmp \
     && git clone https://github.com/wbhart/flint2.git \
     && cd flint2 \
     && ./configure --with-gmp=system \
@@ -49,6 +49,21 @@ RUN    cd /tmp
     && sudo make install \
     && cd /tmp \
     && rm -rf flint2
+
+# Singular
+RUN    cd /opt \
+    && sudo mkdir Singular \
+    && sudo chown -hR gap Singular \
+    && cd Singular
+    && git clone https://github.com/Singular/Sources.git \
+    && cd Sources \
+    && ./autogen.sh \
+    && ./configure --enable-gfanlib \
+    && make -j \
+    && sudo make install
+
+    
+    
 
 
 # Start at $HOME.
