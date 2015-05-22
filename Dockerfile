@@ -29,18 +29,18 @@ RUN    cd /tmp \
     && cd /tmp \
     && rm -rf flint2
 
-# # Singular
-# RUN    cd /opt \
-#     && sudo mkdir Singular \
-#     && sudo chown -hR gap Singular \
-#     && cd Singular \
-#     && git clone https://github.com/Singular/Sources.git \
-#     && cd Sources \
-#     && ./autogen.sh \
-#     && ./configure --enable-gfanlib --with-flint=yes \
-#     && make -j \
-#     && sudo make install
-# 
+# Singular
+RUN    cd /opt \
+    && sudo mkdir Singular \
+    && sudo chown -hR gap Singular \
+    && cd Singular \
+    && git clone https://github.com/Singular/Sources.git \
+    && cd Sources \
+    && ./autogen.sh \
+    && ./configure --enable-gfanlib --with-flint=yes \
+    && make -j \
+    && sudo make install
+
 # # Polymake
 # RUN    cd /tmp \
 #     && wget http://www.polymake.org/lib/exe/fetch.php/download/polymake-2.14.tar.bz2 \
