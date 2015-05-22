@@ -51,17 +51,17 @@ RUN    cd /opt \
 #     && sudo make install \
 #     && cd /tmp \
 #     && rm -rf polymake*
-# 
-# # 4ti2
-# RUN    cd /opt \
-#     && sudo wget http://www.4ti2.de/version_1.6.3/4ti2-1.6.3.tar.gz \
-#     && sudo tar -xf 4ti2-1.6.3.tar.gz \
-#     && sudo chown -hR gap 4ti2-1.6.3 \
-#     && sudo rm 4ti2-1.6.3.tar.gz \
-#     && cd 4ti2-1.6.3 \
-#     && ./configure \
-#     && make -j \
-#     && sudo make install
+
+# 4ti2
+RUN    cd /opt \
+    && sudo wget http://www.4ti2.de/version_1.6.3/4ti2-1.6.3.tar.gz \
+    && sudo tar -xf 4ti2-1.6.3.tar.gz \
+    && sudo chown -hR gap 4ti2-1.6.3 \
+    && sudo rm 4ti2-1.6.3.tar.gz \
+    && cd 4ti2-1.6.3 \
+    && ./configure \
+    && make -j \
+    && sudo make install
 
 # Start at $HOME.
 WORKDIR /home/gap
