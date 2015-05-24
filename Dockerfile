@@ -19,27 +19,27 @@ RUN    sudo apt-get update -qq \
                                    autoconf autogen libtool libreadline6-dev libglpk-dev \
                                    libmpfr-dev libcdd-dev libntl-dev git
 
-# flint (for Singular)
-RUN    cd /tmp \
-    && git clone https://github.com/wbhart/flint2.git \
-    && cd flint2 \
-    && ./configure \
-    && make -j \
-    && sudo make install \
-    && cd /tmp \
-    && rm -rf flint2
-
-# Singular
-RUN    cd /opt \
-    && sudo mkdir Singular \
-    && sudo chown -hR gap Singular \
-    && cd Singular \
-    && git clone https://github.com/Singular/Sources.git \
-    && cd Sources \
-    && ./autogen.sh \
-    && ./configure --enable-gfanlib --with-flint=yes \
-    && make -j \
-    && sudo make install
+# # flint (for Singular)
+# RUN    cd /tmp \
+#     && git clone https://github.com/wbhart/flint2.git \
+#     && cd flint2 \
+#     && ./configure \
+#     && make -j \
+#     && sudo make install \
+#     && cd /tmp \
+#     && rm -rf flint2
+# 
+# # Singular
+# RUN    cd /opt \
+#     && sudo mkdir Singular \
+#     && sudo chown -hR gap Singular \
+#     && cd Singular \
+#     && git clone https://github.com/Singular/Sources.git \
+#     && cd Sources \
+#     && ./autogen.sh \
+#     && ./configure --enable-gfanlib --with-flint=yes \
+#     && make -j \
+#     && sudo make install
 
 # Polymake
 RUN    cd /tmp \
