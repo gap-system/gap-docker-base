@@ -40,28 +40,28 @@ RUN    sudo apt-get update -qq \
 #     && ./configure --enable-gfanlib --with-flint=yes \
 #     && make -j \
 #     && sudo make install
-
-# Polymake
-RUN    cd /tmp \
-    && wget http://www.polymake.org/lib/exe/fetch.php/download/polymake-2.14.tar.bz2 \
-    && tar -xf polymake-2.14.tar.bz2 \
-    && cd polymake-2.14 \\
-    && ./configure --without-java --with-gmp=system \
-    && make -j \
-    && sudo make install \
-    && cd /tmp \
-    && rm -rf polymake*
-
-# # 4ti2
-# RUN    cd /opt \
-#     && sudo wget http://www.4ti2.de/version_1.6.3/4ti2-1.6.3.tar.gz \
-#     && sudo tar -xf 4ti2-1.6.3.tar.gz \
-#     && sudo chown -hR gap 4ti2-1.6.3 \
-#     && sudo rm 4ti2-1.6.3.tar.gz \
-#     && cd 4ti2-1.6.3 \
-#     && ./configure \
+# 
+# # Polymake
+# RUN    cd /tmp \
+#     && wget http://www.polymake.org/lib/exe/fetch.php/download/polymake-2.14.tar.bz2 \
+#     && tar -xf polymake-2.14.tar.bz2 \
+#     && cd polymake-2.14 \\
+#     && ./configure --without-java --with-gmp=system \
 #     && make -j \
-#     && sudo make install
+#     && sudo make install \
+#     && cd /tmp \
+#     && rm -rf polymake*
+
+# 4ti2
+RUN    cd /opt \
+    && sudo wget http://www.4ti2.de/version_1.6.3/4ti2-1.6.3.tar.gz \
+    && sudo tar -xf 4ti2-1.6.3.tar.gz \
+    && sudo chown -hR gap 4ti2-1.6.3 \
+    && sudo rm 4ti2-1.6.3.tar.gz \
+    && cd 4ti2-1.6.3 \
+    && ./configure \
+    && make \
+    && sudo make install
 
 # Start at $HOME.
 WORKDIR /home/gap
