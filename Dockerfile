@@ -47,7 +47,7 @@ RUN    cd /tmp \
     && tar -xf polymake-2.14.tar.bz2 \
     && cd polymake-2.14 \\
     && ./configure --without-java --with-gmp=system \
-    && make \
+    && make -j \
     && sudo make install \
     && cd /tmp \
     && rm -rf polymake*
@@ -60,7 +60,7 @@ RUN    cd /opt \
     && sudo rm 4ti2-1.6.3.tar.gz \
     && cd 4ti2-1.6.3 \
     && ./configure \
-    && make \
+    && make -j \
     && sudo make install
 
 # Start at $HOME.
