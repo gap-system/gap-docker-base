@@ -63,6 +63,14 @@ RUN    cd /opt \
     && make -j \
     && sudo make install
 
+# Pari/GP
+RUN    cd /tmp/ \
+    && wget http://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.7.3.tar.gz \
+    && tar -xf pari-2.7.3.tar.gz \
+    && cd pari-2.7.3 \
+    && ./Configure \
+    && sudo make install
+
 # Start at $HOME.
 WORKDIR /home/gap
 
