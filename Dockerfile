@@ -31,11 +31,10 @@ RUN    cd /tmp \
 
 # Singular
 RUN    cd /opt \
-    && sudo mkdir Singular \
-    && sudo chown -hR gap Singular \
-    && cd Singular \
-    && git clone https://github.com/Singular/Sources.git \
-    && cd Sources \
+    && sudo wget http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-0-3/singular-4.0.3p3.tar.gz \
+    && sudo tar -xf singular-4.0.3p3.tar.gz \
+    && sudo chown -hR gap singular-4.0.3 \
+    && cd singular-4.0.3 \
     && ./autogen.sh \
     && ./configure --enable-gfanlib --with-flint=yes \
     && make -j \
