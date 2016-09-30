@@ -10,4 +10,9 @@ used by some packages in GAP. External software at the moment is
 * 4ti2 1.6.3
 * PARI/GP 2.7.3
 
+# Build instructions
 
+This build requires more resources, and therefore should be performed manually. In the `gap-docker-base` directory, call:
+* `docker build --no-cache --tag="gapsystem/gap-docker-base:latest" .`
+* `docker login`
+* `docker push gapsystem/gap-docker-base:latest`
