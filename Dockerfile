@@ -19,6 +19,16 @@ RUN    sudo apt-get update -qq \
                                    autoconf autogen libtool libreadline6-dev libglpk-dev \
                                    libmpfr-dev libcdd-dev libntl-dev git
 
+# CXSC (for Float)
+RUN    cd /tmp \
+    && wget http://www2.math.uni-wuppertal.de/~xsc/xsc/cxsc/cxsc-2-5-4.tar.gz \
+    && tar -xf cxsc-2-5-4.tar.gz \
+    && mkdir cxscbuild \
+    && cd cxscbuild \
+    && cmake -DCMAKE_INSTALL_PREFIX:PATH=/tmp/cxsc /tmp/cxsc-2-5-4 \
+    && make \
+    && sudo make install
+
 # flint (for Singular)
 RUN    cd /tmp \
     && git clone https://github.com/wbhart/flint2.git \
