@@ -47,7 +47,7 @@ RUN    cd /tmp \
     && tar -xf polymake-2.14.tar.bz2 \
     && cd polymake-2.14 \\
     && ./configure --without-java --with-gmp=system \
-    && make -j \
+    && make \
     && sudo make install \
     && cd /tmp \
     && rm -rf polymake*
