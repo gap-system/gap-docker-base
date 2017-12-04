@@ -14,7 +14,7 @@ RUN    sudo apt-get update -qq \
                                    libxml-writer-perl libxml2-dev w3c-dtd-xhtml xsltproc \
                                    bliss libbliss-dev \
                                    ## GAP stuff
-                                   libmpfr-dev libmpfi-dev libmpc-dev libfplll-dev \
+                                   libmpfr-dev libmpfi-dev libmpc-dev \
                                    ## Singular stuff
                                    autoconf autogen libtool libreadline6-dev libglpk-dev \
                                    libmpfr-dev libcdd-dev libntl-dev git
@@ -28,6 +28,19 @@ RUN    cd /tmp \
     && cmake -DCMAKE_INSTALL_PREFIX:PATH=/tmp/cxsc /tmp/cxsc-2-5-4 \
     && make \
     && sudo make install
+
+# libfplll (for Float)
+RUN    cd /tmp \
+    && wget https://github.com/fplll/fplll/releases/download/5.2.0/fplll-5.2.0.tar.gz \
+    && tar -xf fplll-5.2.0.tar.gz \
+    && rm fplll-5.2.0.tar.gz \
+    && cd fplll-5.2.0 \
+    && ./configure \
+    && make \
+    && sudo make install \
+    && cd /tmp \
+    && rm -rf fplll-5.2.0
+
 
 # flint (for Singular)
 RUN    cd /tmp \
