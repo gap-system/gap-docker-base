@@ -62,9 +62,9 @@ RUN    cd /opt \
 
 # Polymake
 RUN    cd /tmp \
-    && wget http://www.polymake.org/lib/exe/fetch.php/download/polymake-2.14.tar.bz2 \
-    && tar -xf polymake-2.14.tar.bz2 \
-    && cd polymake-2.14 \\
+    && wget https://polymake.org/lib/exe/fetch.php/download/polymake-3.1.tar.bz2 \
+    && tar -xf polymake-3.1.tar.bz2 \
+    && cd polymake-3.1 \\
     && ./configure --without-java --with-gmp=system \
     && make \
     && sudo make install \
