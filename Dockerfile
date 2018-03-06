@@ -6,18 +6,15 @@ MAINTAINER The GAP Group <support@gap-system.org>
 # Prerequirements
 RUN    sudo apt-get update -qq \
     && sudo apt-get -qq install -y \
-                                   ## Polymake stuff
-                                   ant ant-optional g++ libboost-dev \
-                                   libgmp-dev libgmpxx4ldbl libmpfr-dev libperl-dev \
-                                   libsvn-perl libterm-readline-gnu-perl \
-                                   libxml-libxml-perl libxml-libxslt-perl libxml-perl \
-                                   libxml-writer-perl libxml2-dev w3c-dtd-xhtml xsltproc \
-                                   bliss libbliss-dev \
-                                   ## GAP stuff
-                                   libmpfr-dev libmpfi-dev libmpc-dev \
-                                   ## Singular stuff
-                                   autoconf autogen libtool libreadline6-dev libglpk-dev \
-                                   libmpfr-dev libcdd-dev libntl-dev git
+                                ant ant-optional default-jdk g++ libboost-dev \
+                                libgmp-dev libgmpxx4ldbl libperl-dev \
+                                libterm-readline-gnu-perl \
+                                libxml-libxml-perl libxml-libxslt-perl \
+                                libxml-perl libxml-writer-perl \
+                                libterm-readkey-perl libxml2-dev xsltproc ninja-build \
+                                libmpfr-dev libmpfi-dev libmpc-dev \
+                                autoconf autogen libtool libreadline6-dev libglpk-dev \
+                                libmpfr-dev libcdd-dev libntl-dev git
 
 # CXSC (for Float)
 RUN    cd /tmp \
