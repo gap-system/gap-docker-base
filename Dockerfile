@@ -78,6 +78,8 @@ RUN    cd /tmp/ \
     && ./Configure \
     && sudo make install
 
+ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
+
 # Start at $HOME.
 WORKDIR /home/gap
 
