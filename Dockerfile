@@ -60,12 +60,15 @@ RUN    cd /opt \
 
 # 4ti2
 RUN    cd /opt \
-    && sudo wget http://www.4ti2.de/version_1.6.7/4ti2-1.6.7.tar.gz \
-    && sudo tar -xf 4ti2-1.6.7.tar.gz \
-    && sudo chown -hR gap 4ti2-1.6.7 \
-    && sudo rm 4ti2-1.6.7.tar.gz \
-    && cd 4ti2-1.6.7 \
+    && sudo wget https://github.com/4ti2/4ti2/archive/Release_1_6_7.tar.gz \
+    && sudo tar -xf Release_1_6_7.tar.gz \
+    && sudo chown -hR gap 4ti2-Release_1_6_7 \
+    && sudo rm Release_1_6_7.tar.gz \
+    && cd 4ti2-Release_1_6_7 \
+    && chmod +x autogen.sh \
+    && ./autogen.sh \
     && ./configure \
+    && touch doc/4ti2_manual.pdf \
     && make -j \
     && sudo make install
 
