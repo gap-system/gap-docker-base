@@ -16,7 +16,7 @@ RUN    sudo apt-get update -qq \
 
 # CXSC (for Float)
 RUN    cd /tmp \
-    && wget http://www2.math.uni-wuppertal.de/~xsc/xsc/cxsc/cxsc-2-5-4.tar.gz \
+    && wget http://www2.math.uni-wuppertal.de/wrswt/xsc/cxsc/cxsc-2-5-4.tar.gz \
     && tar -xf cxsc-2-5-4.tar.gz \
     && mkdir cxscbuild \
     && cd cxscbuild \
