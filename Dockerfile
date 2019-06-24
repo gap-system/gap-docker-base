@@ -1,18 +1,48 @@
-FROM gapsystem/gap-container
+FROM ubuntu:bionic
 
 MAINTAINER The GAP Group <support@gap-system.org>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Prerequirements
-RUN    sudo apt-get update -qq \
-    && sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime \
-    && sudo apt-get -qq install -y \
-                                libboost-dev \
-                                libgmp-dev libgmpxx4ldbl \
-                                libmpfr-dev libmpfi-dev libmpc-dev \
-                                autoconf autogen libtool libreadline6-dev libglpk-dev \
-                                libmpfr-dev libcdd-dev libntl-dev git polymake
+# Prerequisites
+RUN    dpkg --add-architecture i386 \
+    && apt-get update -qq \
+    && apt-get -qq install -y \
+            autoconf \
+            autogen \
+            automake \
+            build-essential \
+            cmake \
+            g++ \
+            gcc \
+            gcc-multilib \
+            git \
+            libboost-dev \
+            libcdd-dev \
+            libglpk-dev \
+            libgmp-dev \
+            libgmpxx4ldbl \
+            libmpc-dev \
+            libmpfi-dev \
+            libmpfr-dev \
+            libncurses5-dev \
+            libntl-dev \
+            libreadline6-dev \
+            libtool \
+            m4 \
+            polymake \
+            sudo \
+            unzip \
+            wget \
+    && sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+
+# add gap user
+RUN    adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-password gap \
+    && adduser gap sudo \
+    && chown -R gap:gap /home/gap/ \
+    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
+    && cd /home/gap \
+    && touch .sudo_as_admin_successful
 
 ENV CXSC_VERSION 2-5-4
 ENV FPLLL_VERSION 5.2.1
