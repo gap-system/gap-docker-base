@@ -14,27 +14,34 @@ RUN    sudo apt-get update -qq \
                                 autoconf autogen libtool libreadline6-dev libglpk-dev \
                                 libmpfr-dev libcdd-dev libntl-dev git polymake
 
+ENV CXSC_VERSION 2-5-4
+ENV FPLLL_VERSION 5.2.1
+ENV SINGULAR_VERSION 4.1.1
+ENV SINGULAR_PATCH p2
+ENV _4TI2_VERSION 1_6_7
+ENV PARI_VERSION 2.9.5
+
 # CXSC (for Float)
 RUN    cd /tmp \
-    && wget http://www2.math.uni-wuppertal.de/wrswt/xsc/cxsc/cxsc-2-5-4.tar.gz \
-    && tar -xf cxsc-2-5-4.tar.gz \
+    && wget http://www2.math.uni-wuppertal.de/wrswt/xsc/cxsc/cxsc-${CXSC_VERSION}.tar.gz \
+    && tar -xf cxsc-${CXSC_VERSION}.tar.gz \
     && mkdir cxscbuild \
     && cd cxscbuild \
-    && cmake -DCMAKE_INSTALL_PREFIX:PATH=/tmp/cxsc /tmp/cxsc-2-5-4 \
+    && cmake -DCMAKE_INSTALL_PREFIX:PATH=/tmp/cxsc /tmp/cxsc-${CXSC_VERSION} \
     && make \
     && sudo make install
 
 # libfplll (for Float)
 RUN    cd /tmp \
-    && wget https://github.com/fplll/fplll/releases/download/5.2.1/fplll-5.2.1.tar.gz \
-    && tar -xf fplll-5.2.1.tar.gz \
-    && rm fplll-5.2.1.tar.gz \
-    && cd fplll-5.2.1 \
+    && wget https://github.com/fplll/fplll/releases/download/${FPLLL_VERSION}/fplll-${FPLLL_VERSION}.tar.gz \
+    && tar -xf fplll-${FPLLL_VERSION}.tar.gz \
+    && rm fplll-${FPLLL_VERSION}.tar.gz \
+    && cd fplll-${FPLLL_VERSION} \
     && ./configure \
     && make \
     && sudo make install \
     && cd /tmp \
-    && rm -rf fplll-5.2.1
+    && rm -rf fplll-${FPLLL_VERSION}
 
 
 # flint (for Singular)
@@ -49,22 +56,22 @@ RUN    cd /tmp \
 
 # Singular
 RUN    cd /opt \
-    && sudo wget http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-1-1/singular-4.1.1p2.tar.gz \
-    && sudo tar -xf singular-4.1.1p2.tar.gz \
-    && sudo rm singular-4.1.1p2.tar.gz \
-    && sudo chown -hR gap singular-4.1.1 \
-    && cd singular-4.1.1 \
+    && sudo wget http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/$(echo ${SINGULAR_VERSION} | tr . -)/singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
+    && sudo tar -xf singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
+    && sudo rm singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
+    && sudo chown -hR gap singular-${SINGULAR_VERSION} \
+    && cd singular-${SINGULAR_VERSION} \
     && ./configure \
     && make -j \
     && sudo make install
 
 # 4ti2
 RUN    cd /opt \
-    && sudo wget https://github.com/4ti2/4ti2/archive/Release_1_6_7.tar.gz \
-    && sudo tar -xf Release_1_6_7.tar.gz \
-    && sudo chown -hR gap 4ti2-Release_1_6_7 \
-    && sudo rm Release_1_6_7.tar.gz \
-    && cd 4ti2-Release_1_6_7 \
+    && sudo wget https://github.com/4ti2/4ti2/archive/Release_${_4TI2_VERSION}.tar.gz \
+    && sudo tar -xf Release_${_4TI2_VERSION}.tar.gz \
+    && sudo chown -hR gap 4ti2-Release_${_4TI2_VERSION} \
+    && sudo rm Release_${_4TI2_VERSION}.tar.gz \
+    && cd 4ti2-Release_${_4TI2_VERSION} \
     && chmod +x autogen.sh \
     && ./autogen.sh \
     && ./configure \
@@ -74,10 +81,10 @@ RUN    cd /opt \
 
 # Pari/GP
 RUN    cd /tmp/ \
-    && wget https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.9.5.tar.gz \
-    && tar -xf pari-2.9.5.tar.gz \
-    && rm pari-2.9.5.tar.gz \
-    && cd pari-2.9.5 \
+    && wget https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-${PARI_VERSION}.tar.gz \
+    && tar -xf pari-${PARI_VERSION}.tar.gz \
+    && rm pari-${PARI_VERSION}.tar.gz \
+    && cd pari-${PARI_VERSION} \
     && ./Configure \
     && sudo make install
 
