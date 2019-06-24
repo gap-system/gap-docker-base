@@ -19,6 +19,7 @@ RUN    dpkg --add-architecture i386 \
             git \
             libboost-dev \
             libcdd-dev \
+            libflint-dev \
             libglpk-dev \
             libgmp-dev \
             libgmpxx4ldbl \
@@ -46,8 +47,8 @@ RUN    adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-pas
 
 ENV CXSC_VERSION 2-5-4
 ENV FPLLL_VERSION 5.2.1
-ENV SINGULAR_VERSION 4.1.1
-ENV SINGULAR_PATCH p2
+ENV SINGULAR_VERSION 4.1.2
+ENV SINGULAR_PATCH p1
 ENV _4TI2_VERSION 1_6_7
 ENV PARI_VERSION 2.9.5
 
@@ -75,14 +76,14 @@ RUN    cd /tmp \
 
 
 # flint (for Singular)
-RUN    cd /tmp \
-    && git clone https://github.com/wbhart/flint2.git \
-    && cd flint2 \
-    && ./configure \
-    && make -j \
-    && sudo make install \
-    && cd /tmp \
-    && rm -rf flint2
+# RUN    cd /tmp \
+#     && git clone https://github.com/wbhart/flint2.git \
+#     && cd flint2 \
+#     && ./configure \
+#     && make -j \
+#     && sudo make install \
+#     && cd /tmp \
+#     && rm -rf flint2
 
 # Singular
 RUN    cd /opt \
