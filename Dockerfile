@@ -112,7 +112,7 @@ RUN    cd /opt \
 
 # Pari/GP
 RUN    cd /tmp/ \
-    && wget https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-${PARI_VERSION}.tar.gz \
+    && wget https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.9/pari-${PARI_VERSION}.tar.gz \
     && tar -xf pari-${PARI_VERSION}.tar.gz \
     && rm pari-${PARI_VERSION}.tar.gz \
     && cd pari-${PARI_VERSION} \
