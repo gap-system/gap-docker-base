@@ -80,7 +80,7 @@ RUN    cd /tmp \
 #     && git clone https://github.com/wbhart/flint2.git \
 #     && cd flint2 \
 #     && ./configure \
-#     && make -j \
+#     && make -j4 \
 #     && sudo make install \
 #     && cd /tmp \
 #     && rm -rf flint2
@@ -93,7 +93,7 @@ RUN    cd /opt \
     && sudo chown -hR gap singular-${SINGULAR_VERSION} \
     && cd singular-${SINGULAR_VERSION} \
     && ./configure \
-    && make -j \
+    && make -j4 \
     && sudo make install
 
 # 4ti2
@@ -107,7 +107,7 @@ RUN    cd /opt \
     && ./autogen.sh \
     && ./configure \
     && touch doc/4ti2_manual.pdf \
-    && make -j \
+    && make -j4 \
     && sudo make install
 
 # Pari/GP
