@@ -19,8 +19,8 @@ RUN    dpkg --add-architecture i386 \
             git \
             libboost-dev \
             libcdd-dev \
+            libcurl4-openssl-dev \
             libflint-dev \
-            libglpk-dev \
             libgmp-dev \
             libgmpxx4ldbl \
             libmpc-dev \
@@ -30,8 +30,12 @@ RUN    dpkg --add-architecture i386 \
             libntl-dev \
             libreadline6-dev \
             libtool \
+            libxml2-dev \
+            libzmq3-dev \
             m4 \
+            mercurial \
             polymake \
+            python3-pip \
             sudo \
             unzip \
             wget \
