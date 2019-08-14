@@ -125,6 +125,12 @@ RUN    cd /tmp/ \
 
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
 
+# Set up new user and home directory in environment.
+USER gap
+ENV HOME /home/gap
+
+# Note that WORKDIR will not expand environment variables in docker versions < 1.3.1.
+# See docker issue 2637: https://github.com/docker/docker/issues/2637
 # Start at $HOME.
 WORKDIR /home/gap
 
