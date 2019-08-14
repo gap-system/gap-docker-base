@@ -39,7 +39,7 @@ RUN    dpkg --add-architecture i386 \
             sudo \
             unzip \
             wget \
-    && sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+    && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
 # add gap user
 RUN    adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-password gap \
@@ -64,7 +64,7 @@ RUN    cd /tmp \
     && cd cxscbuild \
     && cmake -DCMAKE_INSTALL_PREFIX:PATH=/tmp/cxsc /tmp/cxsc-${CXSC_VERSION} \
     && make \
-    && sudo make install
+    && make install
 
 # libfplll (for Float)
 RUN    cd /tmp \
@@ -74,7 +74,7 @@ RUN    cd /tmp \
     && cd fplll-${FPLLL_VERSION} \
     && ./configure \
     && make \
-    && sudo make install \
+    && make install \
     && cd /tmp \
     && rm -rf fplll-${FPLLL_VERSION}
 
@@ -85,34 +85,34 @@ RUN    cd /tmp \
 #     && cd flint2 \
 #     && ./configure \
 #     && make -j4 \
-#     && sudo make install \
+#     && make install \
 #     && cd /tmp \
 #     && rm -rf flint2
 
 # Singular
 RUN    cd /opt \
-    && sudo wget http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/$(echo ${SINGULAR_VERSION} | tr . -)/singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
-    && sudo tar -xf singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
-    && sudo rm singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
-    && sudo chown -hR gap singular-${SINGULAR_VERSION} \
+    && wget http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/$(echo ${SINGULAR_VERSION} | tr . -)/singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
+    && tar -xf singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
+    && rm singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
+    && chown -hR gap singular-${SINGULAR_VERSION} \
     && cd singular-${SINGULAR_VERSION} \
     && ./configure \
     && make -j4 \
-    && sudo make install
+    && make install
 
 # 4ti2
 RUN    cd /opt \
-    && sudo wget https://github.com/4ti2/4ti2/archive/Release_${_4TI2_VERSION}.tar.gz \
-    && sudo tar -xf Release_${_4TI2_VERSION}.tar.gz \
-    && sudo chown -hR gap 4ti2-Release_${_4TI2_VERSION} \
-    && sudo rm Release_${_4TI2_VERSION}.tar.gz \
+    && wget https://github.com/4ti2/4ti2/archive/Release_${_4TI2_VERSION}.tar.gz \
+    && tar -xf Release_${_4TI2_VERSION}.tar.gz \
+    && chown -hR gap 4ti2-Release_${_4TI2_VERSION} \
+    && rm Release_${_4TI2_VERSION}.tar.gz \
     && cd 4ti2-Release_${_4TI2_VERSION} \
     && chmod +x autogen.sh \
     && ./autogen.sh \
     && ./configure \
     && touch doc/4ti2_manual.pdf \
     && make -j4 \
-    && sudo make install
+    && make install
 
 # Pari/GP
 RUN    cd /tmp/ \
@@ -121,7 +121,7 @@ RUN    cd /tmp/ \
     && rm pari-${PARI_VERSION}.tar.gz \
     && cd pari-${PARI_VERSION} \
     && ./Configure \
-    && sudo make install
+    && make install
 
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
 
