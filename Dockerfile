@@ -41,6 +41,8 @@ RUN    dpkg --add-architecture i386 \
             wget \
     && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
+RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
+
 # add gap user
 RUN    adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-password gap \
     && adduser gap sudo \
