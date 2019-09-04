@@ -49,14 +49,8 @@ RUN    adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-pas
     && cd /home/gap \
     && touch .sudo_as_admin_successful
 
-ENV CXSC_VERSION 2-5-4
-ENV FPLLL_VERSION 5.2.1
-ENV SINGULAR_VERSION 4.1.2
-ENV SINGULAR_PATCH p1
-ENV _4TI2_VERSION 1_6_7
-ENV PARI_VERSION 2.9.5
-
 # CXSC (for Float)
+ENV CXSC_VERSION 2-5-4
 RUN    cd /tmp \
     && wget http://www2.math.uni-wuppertal.de/wrswt/xsc/cxsc/cxsc-${CXSC_VERSION}.tar.gz \
     && tar -xf cxsc-${CXSC_VERSION}.tar.gz \
@@ -67,6 +61,7 @@ RUN    cd /tmp \
     && sudo make install
 
 # libfplll (for Float)
+ENV FPLLL_VERSION 5.2.1
 RUN    cd /tmp \
     && wget https://github.com/fplll/fplll/releases/download/${FPLLL_VERSION}/fplll-${FPLLL_VERSION}.tar.gz \
     && tar -xf fplll-${FPLLL_VERSION}.tar.gz \
@@ -90,6 +85,8 @@ RUN    cd /tmp \
 #     && rm -rf flint2
 
 # Singular
+ENV SINGULAR_VERSION 4.1.2
+ENV SINGULAR_PATCH p1
 RUN    cd /opt \
     && sudo wget http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/$(echo ${SINGULAR_VERSION} | tr . -)/singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
     && sudo tar -xf singular-${SINGULAR_VERSION}${SINGULAR_PATCH}.tar.gz \
@@ -101,6 +98,7 @@ RUN    cd /opt \
     && sudo make install
 
 # 4ti2
+ENV _4TI2_VERSION 1_6_7
 RUN    cd /opt \
     && sudo wget https://github.com/4ti2/4ti2/archive/Release_${_4TI2_VERSION}.tar.gz \
     && sudo tar -xf Release_${_4TI2_VERSION}.tar.gz \
@@ -115,6 +113,7 @@ RUN    cd /opt \
     && sudo make install
 
 # Pari/GP
+ENV PARI_VERSION 2.9.5
 RUN    cd /tmp/ \
     && wget https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.9/pari-${PARI_VERSION}.tar.gz \
     && tar -xf pari-${PARI_VERSION}.tar.gz \
