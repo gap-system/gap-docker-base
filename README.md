@@ -4,11 +4,13 @@ This repository contains the dockerfile for the gap-docker-base image.
 It is build on gap-system/gap-container and contains additional software,
 used by some packages in GAP. External software at the moment is
 
-* Ubuntu packages libmpfr-dev libmpfi-dev libmpc-dev libfplll-dev (needed by the float package)
-* Polymake 2.14 (and dependencies, listed on polymake.org)
-* Singular 4.1.0
-* 4ti2 1.6.3
-* PARI/GP 2.7.3
+* CXSC 2-5-4
+* fplll 5.2.1
+* Singular 4.1.2p1
+* 4ti2 1.6.7
+* PARI/GP 2.9.5
+* Many Ubuntu packages providing dependencies for various GAP package, including
+  libmpc, libmpfi, libmpfr, polymake, ...
 
 # Build instructions
 
