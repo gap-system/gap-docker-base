@@ -13,6 +13,7 @@ RUN    dpkg --add-architecture i386 \
             automake \
             build-essential \
             cmake \
+            curl \
             g++ \
             gcc \
             gcc-multilib \
