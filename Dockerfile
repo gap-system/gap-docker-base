@@ -101,7 +101,7 @@ RUN    cd /opt \
     && make install
 
 # 4ti2
-ENV _4TI2_VERSION 1_6_7
+ENV _4TI2_VERSION 1_6_9
 RUN    cd /opt \
     && wget https://github.com/4ti2/4ti2/archive/Release_${_4TI2_VERSION}.tar.gz \
     && tar -xf Release_${_4TI2_VERSION}.tar.gz \
