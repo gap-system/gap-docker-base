@@ -22,6 +22,7 @@ RUN    dpkg --add-architecture i386 \
             libcdd-dev \
             libcurl4-openssl-dev \
             libflint-dev \
+            libglpk-dev \
             libgmp-dev \
             libgmpxx4ldbl \
             libmpc-dev \
