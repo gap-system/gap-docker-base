@@ -39,6 +39,7 @@ RUN    dpkg --add-architecture i386 \
             polymake \
             python3-pip \
             sudo \
+            texlive-latex-extra \
             unzip \
             wget \
     && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
