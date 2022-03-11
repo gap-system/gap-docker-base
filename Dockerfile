@@ -4,6 +4,10 @@ MAINTAINER The GAP Group <support@gap-system.org>
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# reduce image size by never installing recommends or suggests
+RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf
+RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf
+
 # Prerequisites
 RUN    dpkg --add-architecture i386 \
     && apt-get update -qq \
@@ -12,12 +16,14 @@ RUN    dpkg --add-architecture i386 \
             autogen \
             automake \
             build-essential \
+            ca-certificates \
             cmake \
             curl \
             g++ \
             gcc \
             gcc-multilib \
             git \
+            gnupg \
             libboost-dev \
             libcdd-dev \
             libcurl4-openssl-dev \
@@ -41,6 +47,8 @@ RUN    dpkg --add-architecture i386 \
             sudo \
             unzip \
             wget \
+            zip \
+            zlib1g-dev \
     && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
 RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
@@ -127,11 +135,14 @@ RUN    cd /tmp/ \
     && make install
 
 # Macaulay2
-RUN    echo "deb http://www.math.uiuc.edu/Macaulay2/Repositories/Ubuntu $(lsb_release -sc) main" >/etc/apt/sources.list.d/macaulay2.list \
+RUN    . /etc/lsb-release \
+    && echo "deb http://www.math.uiuc.edu/Macaulay2/Repositories/Ubuntu $DISTRIB_CODENAME main" >/etc/apt/sources.list.d/macaulay2.list \
     && wget http://www2.macaulay2.com/Macaulay2/PublicKeys/Macaulay2-key \
     && apt-key add Macaulay2-key \
     && apt-get update -qq \
     && apt-get -qq install -y macaulay2
+
+RUN rm -r /tmp/*
 
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
 
